@@ -1,0 +1,5 @@
+jmespath
+jmespath-terminal
+datasketch
+numpy
+pandas

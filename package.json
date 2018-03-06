@@ -1,0 +1,12 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmftrindade/sql_analyzer.git"
+  },
+  "dependencies": {
+    "csv-parser": "*",
+    "event-stream": "*",
+    "sqlite-parser": "*"
+  },
+  "license": "UNLICENSED"
+}
