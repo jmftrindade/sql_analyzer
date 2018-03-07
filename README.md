@@ -9,7 +9,7 @@ Table of Contents
 
 # SQL Analyzer
 
-A small end-to-end example on how to automagically extract stats from a list of input -- well-formed ;P -- SQL queries. Take a look at [`analyzer.py`](src/analyzer/analyzer.py) for example stats, which currently include number of joins, list of referenced tables, number of group by columns, etc.
+A small end-to-end example on how to automagically extract stats from a list of input -- well-formed ;P -- SQL queries. Take a look at [`analyzer.py`](src/analyzer/analyzer.py) for example stats, which currently includes number of joins, list of referenced tables, number of group by columns, etc.
 
 To add your own stats, you'll need to understand [JMESPath](http://jmespath.org), which is kinda like XPath, but for JSON.  It's pretty easy to grasp, and their [examples page](http://jmespath.org/examples.html) is a great place to start.
 
