@@ -15,7 +15,7 @@ To add your own stats, you'll need to understand [JMESPath](http://jmespath.org)
 
 After you learn the basics -- shouldn't take you more than 5 minutes if you're already familiar with XPath -- just modify the included [`analyzer.py`](src/analyzer/analyzer.py).
 
-Aside from examples on how to get `structural` stats from SQL queries, I also included in the analyzer a toy example on how to use an LSH forest index for top-k query similarity.  You can use it to e.g., find candidate queries that are textually similar to a given problematic query.
+Aside from examples on how to get *structural* stats from SQL queries, I also included in the analyzer a toy example on how to use an LSH forest index for top-k query similarity.  You can use it to e.g., find candidate queries that are textually similar to a given problematic query.
 
 # Structure
 
