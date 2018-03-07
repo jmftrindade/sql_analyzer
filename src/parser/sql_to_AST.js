@@ -4,21 +4,30 @@ var sqlParser = require('sqlite-parser');
 //var csv = require('csv-parser');
 var es = require('event-stream');
 var fs = require('fs');
+var parseArgs = require('minimist');
 
-// Sanity check
-var query = 'SELECT * FROM test';
-var ast = sqlParser(query);
-console.log('AST for sanity check query \"' + query + '\":');
-console.log(prettify(ast) + '\n');
+// Sanity check.
+//var query = 'SELECT * FROM test';
+//var ast = sqlParser(query);
+//console.log('AST for sanity check query \"' + query + '\":');
+//console.log(prettify(ast) + '\n');
 
-// TODO: Pass it as arg.
-var jsonOutFilename = '../../data/queries_ASTs.json';
+var args = parseArgs(process.argv.slice(2), {
+  'string': 'input',
+  'string': 'output',
+  'alias': {'i': 'input', 'o': 'output'},
+  'default': {
+    'input': '../../data/queries.txt',
+    'output': '../../data/queries_ASTs.json'
+  }
+});
+console.log(args);
+
+var jsonOutFilename = args.output;
 var jsonOut = [];
 
-// Extract SQL queries from input txt file, building an AST for each one as we
-// go. We also extract named tables as well, so we can infer the number of
-// "materialized" views and joins on each script.
-fs.createReadStream('../../data/queries.txt')
+// Reads SQL queries from input txt file, and saves AST for each one as JSON.
+fs.createReadStream(args.input)
     .pipe(es.split())  // One query per line (no semi-colon required).
     .on('data',
         function(data) {
@@ -27,7 +36,7 @@ fs.createReadStream('../../data/queries.txt')
           var query = data.trim();
           var json = processQuery(query);
           if (json != null) {
-            console.log('=> AST:\n' + prettify(json) + '\n');
+//            console.log('=> AST:\n' + prettify(json) + '\n');
             jsonOut.push(json);
           }
         })
@@ -37,7 +46,7 @@ fs.createReadStream('../../data/queries.txt')
     });
 
 // Catch high level exceptions and ignore so we can continue for the next
-// script.
+// query.
 process.on('uncaughtException',
            function(err) { console.log('Error: ' + err); });
 

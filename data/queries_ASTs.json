@@ -1,5 +1,41 @@
 [
  {
+  "queryText": "SELECT * FROM SANITY_CHECK GROUP BY myPrettyLittleField;",
+  "ast": {
+   "type": "statement",
+   "variant": "list",
+   "statement": [
+    {
+     "type": "statement",
+     "variant": "select",
+     "result": [
+      {
+       "type": "identifier",
+       "variant": "star",
+       "name": "*"
+      }
+     ],
+     "from": {
+      "type": "identifier",
+      "variant": "table",
+      "name": "sanity_check"
+     },
+     "group": {
+      "type": "expression",
+      "variant": "list",
+      "expression": [
+       {
+        "type": "identifier",
+        "variant": "column",
+        "name": "myprettylittlefield"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
   "queryText": "SELECT * FROM nation;",
   "ast": {
    "type": "statement",

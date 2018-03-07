@@ -6,6 +6,7 @@
   "dependencies": {
     "csv-parser": "*",
     "event-stream": "*",
+    "minimist": "*",
     "sqlite-parser": "*"
   },
   "license": "UNLICENSED"
